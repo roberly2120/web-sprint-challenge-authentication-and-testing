@@ -3,9 +3,12 @@ const db = require('../../data/dbConfig')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-async function validateRequestObject (req, res, next) {
+function validateRequestObject (req, res, next) {
     const { username, password } = req.body
-    if(username.trim() === "" || !username || !password) {
+    // console.log('username', username, 'password', password)
+    console.log(req.body)
+    // const trimmedUsername = username.trim()
+    if(!username || !password) {
         next({status: 400, message: "username and password required"})
     } else {
         next()
